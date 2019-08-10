@@ -29,13 +29,7 @@ public class IndexController extends BaseController {
 
 	@RequestMapping("/user_tz_all.do")
 	@ResponseBody
-	/*
-	 * 
-	 * 首次更改
-	 * 二次更改
-	 * 
-	 * 
-	 */
+	//
 	public ResponseResult<Object> getIndexUserAllTz(HttpSession session) {
 		ResponseResult<Object> rr = new ResponseResult<Object>();
 		IndexTz indexTz = indexService.getUserAllTz();
