@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script type="text/javascript">
+    $("#app").click(function(e){
+        $.ajax({
+ 		type : "POST",
+ 		//这里换成你自己的项目请求路径
+ 		url : "http://g75tiv.natappfree.cc/wxpay-test/pay/wxpay",
+ 		success:function(r){
+ 			//AJAX success后直接跳转到微信支付收银台的中间页面
+ 			window.location.href = r;
+ 		}
+ 	});
+    })
+ 	
+
+
+    </script>
+    <input type="text">
+    <input type="button" value="充值" id="pay">
+
+</body>
+
+</html>
