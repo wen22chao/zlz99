@@ -27,7 +27,11 @@ public class IndexController extends BaseController {
 	@Autowired
 	private IIndexService indexService;
 	
-
+/***
+ * 
+ * @param session
+ * @return
+ */
 	@RequestMapping("/user_tz_all.do")
 	@ResponseBody
 	public ResponseResult<Object> getIndexUserAllTz(HttpSession session) {
