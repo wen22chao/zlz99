@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.tedu.store.mapper.GoodsCategoryMapper">
+
+	<!-- 获取某个分类下的分类列表 -->
+	<!-- List<GoodsCategory> getGoodsCategoryList(
+			Integer parentId) -->
+	<select id="getGoodsCategoryList"
+		resultType="cn.tedu.store.entity.GoodsCategory">
+		SELECT 
+			id,
+			parent_id		parentId,
+			name,
+			status,
+			sort_order		sortOrder,
+			is_parent		isParent,
+			created_user	createdUser,
+			created_time	createdTime,
+			modified_user	modifiedUser,
+			modified_time	modifiedTime 
+		FROM 
+			t_goods_category
+		WHERE 
+			parent_id=#{parentId}
+	</select>
+	
+	<!-- 获取商品分类列表 -->
+	<!-- List<GoodsCategory> getList(
+			@Param("parentId") Integer parentId, 
+			@Param("count") Integer count) -->
+	<select id="getList"
+		resultType="cn.tedu.store.entity.GoodsCategory">
+		SELECT 
+			id,
+			parent_id		parentId,
+			name,
+			status,
+			sort_order		sortOrder,
+			is_parent		isParent,
+			created_user	createdUser,
+			created_time	createdTime,
+			modified_user	modifiedUser,
+			modified_time	modifiedTime 
+		FROM 
+			t_goods_category
+		WHERE 
+			parent_id=#{parentId} 
+		<if test="count != null">
+		LIMIT 0, #{count}
+		</if>
+	</select>
+	
+	<!-- 根据商品分类的id，获取商品分类信息 -->
+	<!-- GoodsCategory getGoodsCategoryById(Long id) -->
+	<select id="getGoodsCategoryById"
+		resultType="cn.tedu.store.entity.GoodsCategory">
+		SELECT 
+			id, name
+		FROM 
+			t_goods_category
+		WHERE 
+			id=#{id}
+	</select>
+
+</mapper>
+
+
+
+

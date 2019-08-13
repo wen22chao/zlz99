@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.tedu.store.mapper.GoodsMapper">
+
+	<!-- 获取所有商品的数据 -->
+	<!-- List<Goods> getGoodsList() -->
+	<select id="getGoodsList"
+		resultType="cn.tedu.store.entity.Goods">
+		SELECT 
+			id,
+			category_id 	categoryId,
+			item_type		itemType,
+			title,
+			sell_point		sellPoint,
+			price, 
+			num, 
+			barcode,
+			image, 
+			status, 
+			priority,
+			created_user	createdUser,
+			created_time	createdTime,
+			modified_user	modifiedUser,
+			modified_time	modifiedTime 
+		FROM 
+			t_goods 
+	</select>
+	
+	<!-- 根据商品分类id获取商品列表 -->
+	<!-- List<Goods> getGoodsListByCategory(
+			@Param("categoryId") Long categoryId, 
+			@Param("offset") Integer offset, 
+			@Param("countPerPage") Integer countPerPage) -->
+	<select id="getGoodsListByCategory"
+		resultType="cn.tedu.store.entity.Goods">
+		SELECT
+			id, title, price, image 
+		FROM
+			t_goods
+		WHERE 
+			category_id=#{categoryId}
+			AND num > 0 AND status = 1
+		ORDER BY
+			priority DESC
+		LIMIT #{offset}, #{countPerPage}
+	</select>
+	
+	<!-- 根据商品分类id获取商品数量 -->
+	<!-- Integer getGoodsCountByCategory(Long categoryId) -->
+	<select id="getGoodsCountByCategory"
+		resultType="java.lang.Integer">
+		SELECT 
+			COUNT(id) 
+		FROM 
+			t_goods 
+		WHERE 
+			category_id=#{categoryId}
+	</select>
+	
+	<!-- 根据商品id获取商品数据 -->
+	<!-- Goods getGoodsById(Integer id) -->
+	<select id="getGoodsById"
+		resultType="cn.tedu.store.entity.Goods">
+		SELECT 
+			id,
+			category_id 	categoryId,
+			item_type		itemType,
+			title,
+			sell_point		sellPoint,
+			price, 
+			num, 
+			barcode,
+			image, 
+			status, 
+			priority
+		FROM 
+			t_goods 
+		WHERE 
+			id=#{id}
+	</select>
+	
+	<!-- 根据商品型号获取商品列表 -->
+	<!-- List<Goods> getGoodsListByItemType(
+			String itemType) -->
+	<select id="getGoodsListByItemType"
+		resultType="cn.tedu.store.entity.Goods">
+		SELECT 
+			id, title  
+		FROM 
+			t_goods 
+		WHERE 
+			item_type=#{itemType} 
+			AND num>0 AND status=1 
+		ORDER BY 
+			priority DESC 
+	</select>
+	
+
+</mapper>
+
+
+
+
+
+
+

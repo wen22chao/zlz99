@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper  PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+
+<!-- namespace：匹配的接口 -->
+<mapper namespace="cn.tedu.store.mapper.IndexMapper">
+
+	<select id="getUidFromToken" resultType="HashMap">
+		SELECT
+		id,token
+		FROM
+		zpb_members
+	</select>
+
+
+	<!-- 查询用户信息 -->
+	<!-- List<User> select( @Param("where") String where, @Param("orderBy") 
+		String orderBy, @Param("offset") Integer offset, @Param("countPerPage") Integer 
+		countPerPage); -->
+	<select id="select" resultType="cn.tedu.store.entity.Config">
+		SELECT
+		*
+		FROM
+		zpb_config
+	</select>
+
+	<select id="getUserAllTz"
+		resultType="cn.tedu.store.entity.IndexTz">
+		SELECT
+		count(user_id) sum_user,sum(tz_money) sum_money
+		FROM
+		zpb_user_tz
+	</select>
+
+	<select id="getUserAllTzEarn"
+		resultType="cn.tedu.store.entity.IndexTz">
+		SELECT
+		sum(get_money) all_earn
+		FROM
+		zpb_user_earnings
+	</select>
+
+	<select id="getIndexBanner"
+		resultType="cn.tedu.store.entity.Banner">
+		SELECT
+		*
+		FROM
+		zpb_banner
+		WHERE type = #{type}
+	</select>
+
+	<select id="getIndexRealDeal"
+		resultType="cn.tedu.store.entity.RealDeal">
+		SELECT
+		a.tz_time time,a.tz_money tz_money,b.nickname nickName
+		FROM
+		zpb_user_tz as a
+		LEFT JOIN zpb_members as b
+		ON a.user_id = b.id
+		ORDER BY a.tz_time DESC
+		LIMIT
+		0,50
+	</select>
+
+	<select id="getIndexProduct"
+		resultType="cn.tedu.store.entity.Product">
+		SELECT
+		*
+		FROM
+		zpb_goods
+		WHERE is_stick = 1 AND status = 0
+		ORDER BY ctime DESC
+		LIMIT 0,10
+	</select>
+
+
+
+
+</mapper>
