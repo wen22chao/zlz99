@@ -83,6 +83,22 @@ public class IndexController extends BaseController {
 		return rr;
 	}
 	
+	@RequestMapping(value="/test", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseResult<Object> getUidFromToken13(String token) {
+//		System.out.println(token);
+		Integer id = utilService.getUidFromToken(token);
+		ResponseResult<Object> rr = new ResponseResult<>();
+		
+		if(id == 0 || id == null) {
+			return new ResponseResult<>(ResponseResult.STATE_ERR);
+		}
+		rr.setData(id);
+		rr.setMessage("成功！");
+		rr.setState(ResponseResult.STATE_OK);
+		return rr;
+	}
+	
 	@RequestMapping("/banner.do")
 	@ResponseBody
 	public ResponseResult<Object> getIndexBanner(Integer type) {
