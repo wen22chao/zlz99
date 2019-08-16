@@ -9,16 +9,19 @@ import cn.tedu.store.entity.Members;
 import cn.tedu.store.mapper.IndexMapper;
 
 @Service("utilService")
-public class Util {
-	
+public class UtilService implements IUtilService {
+
 	@Autowired
-	private static IndexMapper indexMapper;
+	private IndexMapper indexMapper;
 	
-	public static Integer getUidByToken(String token) {
-		
+	@Override
+	public Integer getUidFromToken(String token) {
 		List<Members> lists = indexMapper.getUidFromToken(token);
-		
-		System.out.println(lists);
-		return 0;
+		if(lists == null) {
+			return 0; 
+		}
+		Integer id = lists.get(0).getId();
+		return id;
 	}
-}	
+
+}

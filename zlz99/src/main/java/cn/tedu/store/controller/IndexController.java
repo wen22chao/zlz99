@@ -18,6 +18,7 @@ import cn.tedu.store.entity.Product;
 import cn.tedu.store.entity.RealDeal;
 import cn.tedu.store.entity.ResponseResult;
 import cn.tedu.store.service.IIndexService;
+import cn.tedu.store.service.IUtilService;
 
 @Controller
 @ResponseBody
@@ -26,6 +27,8 @@ public class IndexController extends BaseController {
 	
 	@Autowired
 	private IIndexService indexService;
+	@Autowired
+	private IUtilService utilService;
 	
 /***
  * 
@@ -58,6 +61,22 @@ public class IndexController extends BaseController {
 			return new ResponseResult<>(ResponseResult.STATE_ERR);
 		}
 		rr.setData(lists);
+		rr.setMessage("成功！");
+		rr.setState(ResponseResult.STATE_OK);
+		return rr;
+	}
+	
+	@RequestMapping("/test2.do")
+	@ResponseBody
+	public ResponseResult<Object> getUidFromToken12(String token) {
+//		System.out.println(token);
+		Integer id = utilService.getUidFromToken(token);
+		ResponseResult<Object> rr = new ResponseResult<>();
+		
+		if(id == 0 || id == null) {
+			return new ResponseResult<>(ResponseResult.STATE_ERR);
+		}
+		rr.setData(id);
 		rr.setMessage("成功！");
 		rr.setState(ResponseResult.STATE_OK);
 		return rr;
