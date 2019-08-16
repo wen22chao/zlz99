@@ -17,7 +17,7 @@ public class UtilService implements IUtilService {
 	@Override
 	public Integer getUidFromToken(String token) {
 		List<Members> lists = indexMapper.getUidFromToken(token);
-		if(lists == null) {
+		if(lists == null || lists.size() == 0) {
 			return 0; 
 		}
 		Integer id = lists.get(0).getId();

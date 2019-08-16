@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.tedu.store.entity.Banner;
@@ -66,7 +67,7 @@ public class IndexController extends BaseController {
 		return rr;
 	}
 	
-	@RequestMapping("/test2.do")
+	@RequestMapping(value="/test2.do", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseResult<Object> getUidFromToken12(String token) {
 //		System.out.println(token);

@@ -12,6 +12,8 @@
 		*
 		FROM
 		zpb_members
+		WHERE 
+			token = #{token}
 	</select>
 
 
