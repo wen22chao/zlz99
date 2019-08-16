@@ -7,9 +7,9 @@
 <!-- namespace：匹配的接口 -->
 <mapper namespace="cn.tedu.store.mapper.IndexMapper">
 
-	<select id="getUidFromToken" resultType="HashMap">
+	<select id="getUidFromToken" resultType="cn.tedu.store.entity.Members">
 		SELECT
-		id,token
+		*
 		FROM
 		zpb_members
 	</select>

@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import cn.tedu.store.entity.Banner;
 import cn.tedu.store.entity.Config;
 import cn.tedu.store.entity.IndexTz;
+import cn.tedu.store.entity.Members;
 import cn.tedu.store.entity.Product;
 import cn.tedu.store.entity.RealDeal;
 import cn.tedu.store.entity.ResponseResult;
 import cn.tedu.store.service.IIndexService;
-import cn.tedu.store.service.Util;
 
 @Controller
 @ResponseBody
@@ -51,13 +51,13 @@ public class IndexController extends BaseController {
 	@ResponseBody
 	public ResponseResult<Object> getUidFromToken11(String token) {
 		System.out.println(token);
-		Integer id = Util.getUidByToken(token);
+		List<Members> lists = indexService.getUidByToken(token);
 		ResponseResult<Object> rr = new ResponseResult<>();
 		
-		if(id == 0) {
+		if(lists == null) {
 			return new ResponseResult<>(ResponseResult.STATE_ERR);
 		}
-		rr.setData(id);
+		rr.setData(lists);
 		rr.setMessage("成功！");
 		rr.setState(ResponseResult.STATE_OK);
 		return rr;

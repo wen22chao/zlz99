@@ -1,17 +1,17 @@
 package cn.tedu.store.mapper;
 
-import java.util.HashMap;
 import java.util.List;
 
 import cn.tedu.store.entity.Banner;
 import cn.tedu.store.entity.Config;
 import cn.tedu.store.entity.IndexTz;
+import cn.tedu.store.entity.Members;
 import cn.tedu.store.entity.Product;
 import cn.tedu.store.entity.RealDeal;
 
 public interface IndexMapper {
 	
-	HashMap<String, Integer> getUidFromToken(String token);
+	List<Members> getUidFromToken(String token);
 	
 	/**
 	 * 添加用户信息

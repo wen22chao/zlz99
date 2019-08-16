@@ -1,6 +1,5 @@
 package cn.tedu.store.service;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +8,7 @@ import org.springframework.stereotype.Service;
 import cn.tedu.store.entity.Banner;
 import cn.tedu.store.entity.Config;
 import cn.tedu.store.entity.IndexTz;
+import cn.tedu.store.entity.Members;
 import cn.tedu.store.entity.Product;
 import cn.tedu.store.entity.RealDeal;
 import cn.tedu.store.mapper.IndexMapper;
@@ -72,16 +72,18 @@ public class IndexServiceImpl implements IIndexService {
 	}
 
 
-	@SuppressWarnings("unused")
 	@Override
-	public Integer getUidFromToken(String token) {
-		HashMap<String, Integer> token2 = indexMapper.getUidFromToken(token);
+	public List<Members> getUidFromToken(String token) {
+		List<Members> token2 = indexMapper.getUidFromToken(token);
 		System.out.println(token2);
-		System.out.println(token2.get("id"));
-		if(token2 == null) {
-			return 0;
-		}
-		return token2.get("id");
+		
+		return null;
+	}
+
+
+	@Override
+	public List<Members> getUidByToken(String token) {
+		return indexMapper.getUidFromToken(token);
 	}
 
 
