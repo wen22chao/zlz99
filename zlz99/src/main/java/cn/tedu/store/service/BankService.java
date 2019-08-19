@@ -6,15 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import cn.tedu.store.mapper.BankMapping;
 
-public class bankService implements IBankService {
+public class BankService implements IBankService {
 
 	@Autowired
 	private BankMapping bankMapping;
 	
 	@Override
-	public HashMap<Object, Object> get_user_bank(String token) {
+	public HashMap<Object, Object> get_user_bank(Integer uid) {
 		
-		return null;
+		return bankMapping.get_user_bank();
 	}
 
 }

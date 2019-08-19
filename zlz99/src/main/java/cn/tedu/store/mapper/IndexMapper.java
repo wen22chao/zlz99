@@ -11,7 +11,7 @@ import cn.tedu.store.entity.RealDeal;
 
 public interface IndexMapper {
 	
-	List<Members> getUidFromToken(String token);
+	Members getUidFromToken(String token);
 	
 	/**
 	 * 添加用户信息

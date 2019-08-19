@@ -1,5 +1,8 @@
 package cn.tedu.store.mapper;
 
-public class BankMapping {
-	String string;
+import java.util.HashMap;
+
+public interface BankMapping {
+
+	HashMap<Object, Object> get_user_bank();
 }

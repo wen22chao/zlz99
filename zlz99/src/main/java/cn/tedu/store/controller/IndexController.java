@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import cn.tedu.store.entity.Banner;
 import cn.tedu.store.entity.Config;
 import cn.tedu.store.entity.IndexTz;
-import cn.tedu.store.entity.Members;
 import cn.tedu.store.entity.Product;
 import cn.tedu.store.entity.RealDeal;
 import cn.tedu.store.entity.ResponseResult;
@@ -55,7 +54,7 @@ public class IndexController extends BaseController {
 	@ResponseBody
 	public ResponseResult<Object> getUidFromToken11(String token) {
 		System.out.println(token);
-		List<Members> lists = indexService.getUidByToken(token);
+		Integer lists = indexService.getUidFromToken(token);
 		ResponseResult<Object> rr = new ResponseResult<>();
 		
 		if(lists == null) {

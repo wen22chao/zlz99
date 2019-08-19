@@ -1,7 +1,5 @@
 package cn.tedu.store.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +14,15 @@ public class UtilService implements IUtilService {
 	
 	@Override
 	public Integer getUidFromToken(String token) {
-		List<Members> lists = indexMapper.getUidFromToken(token);
-		if(lists == null || lists.size() == 0) {
+		
+		if(token == null) {
+			return 0;
+		}
+		Members lists = indexMapper.getUidFromToken(token);
+		if(lists == null || lists.getId() == null) {
 			return 0; 
 		}
-		Integer id = lists.get(0).getId();
+		Integer id = lists.getId();
 		return id;
 	}
 

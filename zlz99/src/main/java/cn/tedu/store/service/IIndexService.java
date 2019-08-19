@@ -5,7 +5,6 @@ import java.util.List;
 import cn.tedu.store.entity.Banner;
 import cn.tedu.store.entity.Config;
 import cn.tedu.store.entity.IndexTz;
-import cn.tedu.store.entity.Members;
 import cn.tedu.store.entity.Product;
 import cn.tedu.store.entity.RealDeal;
 
@@ -13,7 +12,6 @@ public interface IIndexService {
 	
 	
 
-	List<Members> getUidFromToken(String token);
 	/**
 	 * 根据用户名查询用户信息
 	 * @param username 用户名
@@ -33,7 +31,7 @@ public interface IIndexService {
 	
 	List<Product> getIndexProduct();
 	
-	List<Members> getUidByToken(String token);
+	Integer getUidFromToken(String token);
 	
 
 }

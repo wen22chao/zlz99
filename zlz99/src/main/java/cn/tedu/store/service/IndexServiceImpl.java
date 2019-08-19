@@ -19,17 +19,15 @@ public class IndexServiceImpl implements IIndexService {
 	@Autowired
 	private IndexMapper indexMapper;
 
-
 	@Override
 	public List<Config> findIndexConfig() {
 		List<Config> config = indexMapper.select();
-		if(config == null) {
+		if (config == null) {
 			return null;
-		}else {
+		} else {
 			return config;
 		}
 	}
-
 
 	@Override
 	public IndexTz getUserAllTz() {
@@ -38,7 +36,7 @@ public class IndexServiceImpl implements IIndexService {
 		List<IndexTz> list2 = indexMapper.getUserAllTzEarn();
 		System.out.println(list);
 //		indexTz.setAll_earn(indexMapper.getUserAllTzEarn().getAll_earn());
-		if(list != null && list2 != null) {
+		if (list != null && list2 != null) {
 			indexTz = list.get(0);
 			indexTz.setAll_earn(list2.get(0).getAll_earn());
 			System.out.println(indexTz);
@@ -46,48 +44,35 @@ public class IndexServiceImpl implements IIndexService {
 		return indexTz;
 	}
 
-
 	@Override
 	public List<Banner> getIndexBanner(Integer type) {
 		List<Banner> list = indexMapper.getIndexBanner(type);
 		return list;
 	}
 
-
 	@Override
 	public List<RealDeal> getIndexRealDeal() {
 		List<RealDeal> lists = indexMapper.getIndexRealDeal();
-		
+
 		return lists;
 	}
-
 
 	@Override
 	public List<Product> getIndexProduct() {
 		List<Product> list = indexMapper.getIndexProduct();
-		if(list != null) {
+		if (list != null) {
 			return list;
 		}
 		return null;
 	}
 
-
 	@Override
-	public List<Members> getUidFromToken(String token) {
-		List<Members> token2 = indexMapper.getUidFromToken(token);
-		System.out.println(token2);
+	public Integer getUidFromToken(String token) {
+		System.out.println(0000);
+		Members lists = indexMapper.getUidFromToken(token);
+		System.out.println(1111);
 		
-		return null;
+		return lists.getId();
 	}
-
-
-	@Override
-	public List<Members> getUidByToken(String token) {
-		return indexMapper.getUidFromToken(token);
-	}
-
-
-
-
 
 }

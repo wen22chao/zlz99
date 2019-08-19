@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<!-- namespace：匹配的接口 -->
+<mapper namespace="cn.tedu.store.mapper.UserMapper">
+
+	<select id="get_user_bank" 
+		resultType="HashMap">
+		SELECT 
+			*
+		FROM 
+			zpb_bind_bankcard
+		WHERE UID =#{uid}
+	</select>
+
+</mapper>
