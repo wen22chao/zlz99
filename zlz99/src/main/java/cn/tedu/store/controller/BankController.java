@@ -19,6 +19,7 @@ public class BankController extends BaseController {
 	private IIndexService indexService;
 	
 	@RequestMapping("/get_user_bank.do")
+	@ResponseBody
 	public ResponseResult<Object> get_user_bank(String token){
 		System.out.println(token);
 		ResponseResult<Object> rr = new ResponseResult<>();
@@ -35,6 +36,6 @@ public class BankController extends BaseController {
 			rr.setMessage("获取参数成功！");
 			rr.setState(ResponseResult.STATE_OK);
 		}
-		return rr;
+		return rr; 
 	}
 }
