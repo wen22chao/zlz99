@@ -15,5 +15,14 @@
 			status = 1 AND is_new = 0 AND is_activity = 0
 		ORDER BY type desc,integral desc
 	</select>
+	<select id="getIntegralById" 
+		resultType="Integer">
+		SELECT 
+			integral
+		FROM 
+			zpb_members
+		WHERE 
+			id = #{id}
+	</select>
 
 </mapper>

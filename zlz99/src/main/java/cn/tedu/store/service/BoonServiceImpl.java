@@ -18,5 +18,11 @@ public class BoonServiceImpl implements IBoonServicer {
 		List<HashMap<Object, Object>> list = boonMapper.convert();
 		return list;
 	}
+	@Override
+	public Integer getIntegralById(Integer id) {
+		
+		return boonMapper.getIntegralById(id);
+	}
+	
 	
 }
