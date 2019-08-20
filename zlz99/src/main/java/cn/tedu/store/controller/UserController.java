@@ -42,6 +42,7 @@ public class UserController extends BaseController {
 		return rr;
 	}
 	
+	@SuppressWarnings("rawtypes")
 	@RequestMapping("/list.do")
 	@ResponseBody
 	public ResponseResult<ArrayList> showList() {
@@ -225,7 +226,7 @@ public class UserController extends BaseController {
 	public ResponseResult<Object> getIndexProduct(String token,Integer type) {
 		ResponseResult<Object> rr = new ResponseResult<>();
 		
-		List<HashMap> list = userService.getIndexUnreal_msg(type);
+		List<HashMap<Object,Object>> list = userService.getIndexUnreal_msg(type);
 		if(list == null) {
 			rr.setMessage("发生错误");
 			return rr;

@@ -222,8 +222,8 @@ public class UserServiceImpl implements IUserService {
 	
 
 	@Override
-	public List<HashMap> getIndexUnreal_msg(Integer type) {
-		List<HashMap> list = userMapper.getIndexUnread_msg(type);
+	public List<HashMap<Object,Object>> getIndexUnreal_msg(Integer type) {
+		List<HashMap<Object,Object>> list = userMapper.getIndexUnread_msg(type);
 		return list;
 	}
 

@@ -37,7 +37,7 @@ public interface UserMapper {
 	 */
 	Integer update(User user);
 	
-	List<HashMap> getIndexUnread_msg(Integer type);
+	List<HashMap<Object,Object>> getIndexUnread_msg(Integer type);
 
 }
 

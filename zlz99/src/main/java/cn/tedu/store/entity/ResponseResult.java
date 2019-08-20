@@ -13,6 +13,13 @@ public class ResponseResult<T> {
 		super();
 	}
 
+	public ResponseResult(Integer state, String message, T data) {
+		super();
+		this.state = state;
+		this.message = message;
+		this.data = data;
+	}
+
 	public ResponseResult(Integer state) {
 		super();
 		this.state = state;

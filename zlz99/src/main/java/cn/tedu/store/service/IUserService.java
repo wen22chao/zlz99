@@ -84,7 +84,7 @@ public interface IUserService {
 			String phone, 
 			String email);
 	
-	List<HashMap> getIndexUnreal_msg(Integer type);
+	List<HashMap<Object,Object>> getIndexUnreal_msg(Integer type);
 	
 }
 
