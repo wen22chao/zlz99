@@ -6,12 +6,23 @@
 <mapper namespace="cn.tedu.store.mapper.BankMapper">
 
 	<select id="get_user_bank" 
-		resultType="HashMap">
+		resultType="Map">
 		SELECT 
 			*
 		FROM 
 			zpb_bind_bankcard
-		WHERE UID =#{uid}
+		WHERE UID = #{uid}
 	</select>
 
+	<select id="get_user_open_bank" 
+		resultType="Map">
+		SELECT 
+			sub_branch_name
+		FROM 
+			zpb_banks
+		WHERE 
+			CITY like "%"#{city}"%"
+		AND
+			bank_name like "%"#{bank_name}"%"
+	</select>
 </mapper>
