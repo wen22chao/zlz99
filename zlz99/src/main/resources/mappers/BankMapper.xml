@@ -3,7 +3,7 @@
 	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
 
 <!-- namespace：匹配的接口 -->
-<mapper namespace="cn.tedu.store.mapper.UserMapper">
+<mapper namespace="cn.tedu.store.mapper.BankMapper">
 
 	<select id="get_user_bank" 
 		resultType="HashMap">
