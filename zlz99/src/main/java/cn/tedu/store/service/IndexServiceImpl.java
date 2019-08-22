@@ -70,8 +70,9 @@ public class IndexServiceImpl implements IIndexService {
 	public Integer getUidFromToken(String token) {
 		System.out.println(0000);
 		Members lists = indexMapper.getUidFromToken(token);
-		System.out.println(1111);
-		
+		if(lists == null){
+			return 0;
+		}
 		return lists.getId();
 	}
 

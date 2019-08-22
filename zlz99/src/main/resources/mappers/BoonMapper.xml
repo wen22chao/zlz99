@@ -24,5 +24,87 @@
 		WHERE 
 			id = #{id}
 	</select>
+	
+	<select id="coupons_detail" resultType="Map">
+		SELECT
+			<!-- use_time,due_time,get_quantity,astrict_sum,is_activity -->
+			*
+		FROM
+			zpb_coupons
+		WHERE
+			id = #{id}
+	</select>
+	<!-- List<HashMap<Object,Object>> is_conversion(Integer uid, Integer c_id); -->
+	<select id="is_conversion" resultType="Map">
+		SELECT
+			<!-- use_time,due_time,get_quantity,astrict_sum,is_activity -->
+			*
+		FROM
+			zpb_members_coupons
+		WHERE
+			uid = #{uid}
+		AND
+			c_id = #{c_id}
+		AND
+			is_use = 0
+	</select>
+	
+	<insert id="putMemberCoupon" parameterType="java.util.HashMap" >
+		<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+			select LAST_INSERT_ID() as id
+		</selectKey>
+		INSERT INTO
+			zpb_members_coupons(
+				uid,
+				money,
+				type,
+				integral,
+				name,
+				astrict_sum,
+				c_id,
+				ctime,
+				past_time,
+				day
+			)VALUE(
+				#{uid},
+				#{money},
+				#{type},
+				#{integral},
+				#{name},
+				#{astrict_sum},
+				#{c_id},
+				#{ctime},
+				#{past_time},
+				#{day} 
+			)
+	</insert>
+	
+	<update id="uptadeIntegral" >
+		UPDATE 
+			zpb_members
+		SET
+			integral = integral - #{integral}
+		WHERE
+			id = #{id}
+	</update>
+	
+	<insert id="add_integral_data" parameterType="java.util.HashMap" >
+		<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+			select LAST_INSERT_ID() as id
+		</selectKey>
+		INSERT INTO
+			zpb_user_integral(
+				user_id,
+				num,
+				name,
+				ctime
+			)VALUE(
+				#{user_id},
+				#{num},
+				#{name},
+				#{ctime}
+			)
+	</insert>
+	
 
 </mapper>
