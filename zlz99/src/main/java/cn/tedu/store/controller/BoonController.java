@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.tedu.store.entity.ResponseResult;
 import cn.tedu.store.service.IBoonServicer;
+import cn.tedu.store.service.IUtilService;
 
 @Controller
 @RequestMapping("boon")
@@ -22,6 +23,8 @@ public class BoonController extends BaseController {
 	public ResponseResult<Object> rr;
 	@Autowired
 	private IBoonServicer boonService;
+	@Autowired
+	private IUtilService utilService;
 	
 	@RequestMapping("/convert.do")
 	public ResponseResult<Object> convert(){
@@ -128,4 +131,46 @@ public class BoonController extends BaseController {
 		}
 		return new ResponseResult<>(1, "兑换成功！", map2);
 	}
+	
+	@RequestMapping("/user_coupons_log")
+	public ResponseResult<Object> user_coupons_log(String token, Integer page){
+		Integer uid = getUidFromToken(token);
+		if(uid == 0) {
+			return new ResponseResult<>(0,"token错误");
+		}
+		if(page == null) {
+			page = 1;
+		}
+		Integer per = page * 10 - 10;
+		List<Map<Object, Object>> list = boonService.get_user_coupons_log(uid,per);
+		if(list.size() < 1) {
+			return new ResponseResult<>(0, "已显示所有信息");
+		}
+		for(int i = 0; i < list.size(); i++) {
+			long time = (long)(int)list.get(i).get("ctime");
+			list.get(i).put("ctime", utilService.getStringDate(time));
+			long past_time = (long)(int)list.get(i).get("past_time");
+			list.get(i).put("past_time", utilService.getStringDate(past_time));
+		}
+		return new ResponseResult<>(1, "获取信息成功！", list);
+	}
+	
+	@RequestMapping("get_task.do")
+	public ResponseResult<Object> get_task(){
+		List<Map<Object, Object>> list = boonService.get_task();
+		if(list.size() < 1) {
+			return new ResponseResult<>(0, "未获取到任务");
+		}
+		return new ResponseResult<>(1, "获取任务成功！", list);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }	

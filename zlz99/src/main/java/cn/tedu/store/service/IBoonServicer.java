@@ -47,4 +47,21 @@ public interface IBoonServicer {
 	 * @param map2
 	 */
 	Integer add_integral_data(HashMap<String, Object> map2);
+	
+	/**
+	 * 获取用户兑换券的记录
+	 * @param uid 用户id
+	 * @param page 第几页
+	 * @return 
+	 */
+	List<Map<Object,Object>> get_user_coupons_log(Integer uid, Integer per);
+	
+	/**
+	 * 获取任务详情
+	 * @return
+	 */
+	List<Map<Object,Object>> get_task();
+	
+	
+	
 }

@@ -52,4 +52,18 @@ public interface BoonMapper {
 	 * @return
 	 */
 	Integer add_integral_data(Map<String, Object> maps);
+	
+	/**
+	 * 获取用户兑换券的记录
+	 * @param uid
+	 * @param page
+	 * @return
+	 */
+	List<Map<Object,Object>> get_user_coupons_log(@Param("uid")Integer uid, @Param("per")Integer per);
+	
+	/**
+	 *获取任务详情
+	 * @return
+	 */
+	List<Map<Object,Object>> get_task();
 }

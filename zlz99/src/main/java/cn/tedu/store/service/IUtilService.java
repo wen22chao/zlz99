@@ -7,4 +7,11 @@ public interface IUtilService {
 	 * @return 用户id
 	 */
 	Integer getUidFromToken(String token);
+	
+	/**
+	 * 获取格式化String类型日期
+	 * @param time
+	 * @return
+	 */
+	String getStringDate(long time);
 }

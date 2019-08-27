@@ -106,5 +106,29 @@
 			)
 	</insert>
 	
+	<select id="get_user_coupons_log" resultType="Map">
+		SELECT 
+			a.*,b.logistics_number,c.jl_img
+		FROM
+			zpb_members_coupons as a 
+		LEFT JOIN
+			zpb_member_exch_goods as b on a.o_id=b.oid
+		LEFT JOIN
+			zpb_coupons as c on a.c_id=c.id
+		WHERE
+			a.uid = #{uid}
+		ORDER BY 
+			a.id desc
+		LIMIT #{per},10
+			
+	</select>
+	
+	<select id="get_task" resultType="Map">
+		SELECT
+			* 
+		FROM
+			zpb_task
+	</select>
+	
 
 </mapper>

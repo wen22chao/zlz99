@@ -1,5 +1,8 @@
 package cn.tedu.store.service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +27,12 @@ public class UtilService implements IUtilService {
 		}
 		Integer id = lists.getId();
 		return id;
+	}
+	@Override
+	public String getStringDate(long time) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String format = sdf.format(new Date(time * 1000L));
+		return format;
 	}
 
 }
