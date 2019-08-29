@@ -66,4 +66,18 @@ public interface BoonMapper {
 	 * @return
 	 */
 	List<Map<Object,Object>> get_task();
+	
+	/**
+	 * 插入用户兑换记录到数据库
+	 * @param map
+	 * @return
+	 */
+	Integer insert_member_exch_goods(Map<String, Object> map);
+	
+	/**
+	 * 为用户增加券
+	 * @param map1
+	 */
+	Integer insert_member_coupons(HashMap<String, Object> map1);
+	
 }

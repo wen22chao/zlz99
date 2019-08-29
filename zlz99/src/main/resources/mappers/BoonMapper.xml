@@ -106,6 +106,32 @@
 			)
 	</insert>
 	
+	<insert id="insert_member_coupons" parameterType="java.util.HashMap" >
+		<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+			select LAST_INSERT_ID() as id
+		</selectKey>
+		INSERT INTO
+			zpb_members_coupons(
+				uid,
+                money,
+                type,
+                integral,
+                name,
+                ctime,
+                day,
+                o_id      
+			)VALUE(
+				#{uid},
+				#{money},
+				#{type},
+				#{integral},
+				#{name},
+				#{ctime},
+				#{day},
+				#{o_id}
+			)
+	</insert>
+	
 	<select id="get_user_coupons_log" resultType="Map">
 		SELECT 
 			a.*,b.logistics_number,c.jl_img
@@ -130,5 +156,34 @@
 			zpb_task
 	</select>
 	
+	<insert id="insert_member_exch_goods" parameterType="java.util.Map" >
+		<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+			select LAST_INSERT_ID() as id
+		</selectKey>
+		INSERT INTO
+			zpb_member_exch_goods(
+				uid,
+                o_money,
+                type,
+                o_name,
+                number,
+                postman,
+                tele,
+                addr,
+                c_id,      
+                c_time
+			)VALUE(
+				#{uid},
+				#{o_money},
+				#{type},
+				#{o_name},
+				#{number},
+				#{postman},
+				#{tele},
+				#{addr},
+				#{c_id},
+				#{c_time}
+			)
+	</insert>
 
 </mapper>

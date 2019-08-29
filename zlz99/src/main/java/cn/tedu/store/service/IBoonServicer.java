@@ -62,6 +62,26 @@ public interface IBoonServicer {
 	 */
 	List<Map<Object,Object>> get_task();
 	
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	Map<String, Object> user_exchange(Integer uid,Integer id);
+	/**
+	 *插入用户兑换券记录到数据库 
+	 * @param map 用户兑换券的信息
+	 * @return 返回主键ID 
+	 */
+	Integer insert_member_exch_goods(Map<String, Object> map);
+	
+	/**
+	 * 为用户增加券
+	 * @param map1
+	 * @return
+	 */
+	Integer insert_member_coupons(HashMap<String, Object> map1);
+	
 	
 	
 }

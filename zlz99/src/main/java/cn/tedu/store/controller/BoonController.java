@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -155,13 +156,89 @@ public class BoonController extends BaseController {
 		return new ResponseResult<>(1, "获取信息成功！", list);
 	}
 	
-	@RequestMapping("get_task.do")
+	@RequestMapping("/get_task")
 	public ResponseResult<Object> get_task(){
 		List<Map<Object, Object>> list = boonService.get_task();
 		if(list.size() < 1) {
 			return new ResponseResult<>(0, "未获取到任务");
 		}
 		return new ResponseResult<>(1, "获取任务成功！", list);
+	}
+	
+	@RequestMapping("/user_exchange")
+	public ResponseResult<Object> user_exchange(String token, Integer id){
+		Integer uid = getUidFromToken(token);
+		if(uid == 0 || id == null) {
+			return new ResponseResult<>(0, "参数错误！");
+		}
+		Map<String, Object> map = boonService.user_exchange(uid, id);
+		return new ResponseResult<>((int)map.get("state"), map.get("msg"));
+	}
+	
+	@RequestMapping("/order_submit")
+	@Transactional
+	public ResponseResult<Object> order_submit(@Param(value = "token")String token,
+			Integer id,
+			String postman,
+			String tele,
+			String addr,
+			Integer number){
+		if(token == null || postman == null || tele == null || addr == null || id == null) {
+			return new ResponseResult<>(0, "参数错误");
+		}
+		Integer uid = getUidFromToken(token);
+		if(uid == 0) {
+			return new ResponseResult<>(0, "token错误！");
+		}
+		if(number == null) {
+			number = 1;
+		}
+		Integer integral = boonService.getIntegralById(uid);
+		List<HashMap<Object,Object>> list = boonService.coupons_detail(id);
+		int integral_all = number * (int)list.get(0).get("integral"); 
+		if(integral <= 0 || integral < integral_all) {
+			return new ResponseResult<>(0, "用户积分不足");
+		}
+		Integer uptadeIntegral = boonService.uptadeIntegral(integral_all, uid);
+		if(uptadeIntegral == null) {
+			return new ResponseResult<>(0, "发生错误", "");
+		}
+		Map<String,Object> map = new HashMap<>();
+		map.put("uid", uid);
+		map.put("o_money", list.get(0).get("money"));
+		map.put("type", list.get(0).get("type"));
+		map.put("o_name", list.get(0).get("name"));
+		map.put("number", number);
+		map.put("postman", postman);
+		map.put("tele", tele);
+		map.put("addr", addr);
+		map.put("c_id", 70);
+		map.put("c_time", (int)(System.currentTimeMillis() / 1000));
+		
+		Integer insertId = boonService.insert_member_exch_goods(map);
+		System.out.println(insertId);
+		
+		HashMap<String, Object> map1 = new HashMap<>();
+		map1.put("uid", uid);
+		map1.put("money", list.get(0).get("money"));
+		map1.put("type", list.get(0).get("type"));
+		map1.put("integral", list.get(0).get("integral"));
+		map1.put("name", list.get(0).get("name"));
+		map1.put("ctime", System.currentTimeMillis() / 1000);
+		map1.put("day", number);
+		map1.put("o_id", insertId);
+		
+		Integer inseretId2 = boonService.insert_member_coupons(map1);
+		System.out.println(inseretId2);
+		
+		HashMap<String, Object> map2 = new HashMap<>();
+		System.out.println("\t" + uid + "\t");
+		map2.put("user_id", uid);
+		map2.put("num", "-" + integral_all + "积分");
+		map2.put("name", "兑换" + list.get(0).get("name"));
+		map2.put("ctime", System.currentTimeMillis() / 1000);
+		Integer insertId3 = boonService.add_integral_data(map2);
+		return new ResponseResult<>(1, "兑换成功", insertId3);
 	}
 	
 	
