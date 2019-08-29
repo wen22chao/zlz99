@@ -212,7 +212,7 @@ public class BoonController extends BaseController {
 		map.put("postman", postman);
 		map.put("tele", tele);
 		map.put("addr", addr);
-		map.put("c_id", 70);
+		map.put("c_id", list.get(0).get("id"));
 		map.put("c_time", (int)(System.currentTimeMillis() / 1000));
 		
 		Integer insertId = boonService.insert_member_exch_goods(map);
