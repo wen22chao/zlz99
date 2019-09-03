@@ -21,7 +21,7 @@
 			<artifactId>spring-jdbc</artifactId>
 			<version>4.3.9.RELEASE</version>
 		</dependency>
-		
+
 		<!-- junit测试jar包 -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -66,43 +66,47 @@
 		</dependency>
 
 		<!-- jackson -->
+		<!-- <dependency> <groupId>com.fasterxml.jackson.core</groupId> <artifactId>jackson-databind</artifactId> 
+			<version>2.9.6</version> </dependency> -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.9.6</version>
+			<version>2.9.9.3</version>
+			<classifier>sources</classifier>
+			<type>java-source</type>
 		</dependency>
 
 		<!-- 加入log4j支持 -->
-		<dependency>  
-            <groupId>org.slf4j</groupId>  
-            <artifactId>slf4j-api</artifactId>  
-            <version>1.6.6</version>  
-        </dependency>  
-        <dependency>  
-            <groupId>org.slf4j</groupId>  
-            <artifactId>slf4j-log4j12</artifactId>  
-            <version>1.6.6</version>  
-        </dependency> 
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.6.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.6.6</version>
+		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
-		
-            <dependency>
-                <groupId>com.sun.mail</groupId>
-                <artifactId>javax.mail</artifactId>
-                <version>1.6.2</version>
-            </dependency>
-       
-       <!-- java邮件支持的依赖 -->     
-       <dependency>
+
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+
+		<!-- java邮件支持的依赖 -->
+		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
 			<version>1.5.0-b01</version>
 		</dependency>
-		
- 		<!--AOP支持  -->
+
+		<!--AOP支持 -->
 
 
 	</dependencies>
