@@ -1,8 +1,9 @@
 package cn.tedu.store.service;
 
-import cn.tedu.store.entity.Goods;
-
 import java.util.List;
+import java.util.Map;
+
+import cn.tedu.store.entity.Goods;
 
 public interface IGoodsService {
 	/**
@@ -57,6 +58,11 @@ public interface IGoodsService {
 	 */
 	List<Goods> getGoodsListByItemType(
 			String itemType);
+
+	/**
+	 * 获取首页来租排行
+	 */
+	List<Map<String, Object>> get_goods_list(int per, Integer type, Integer uid);
 	
 }
 

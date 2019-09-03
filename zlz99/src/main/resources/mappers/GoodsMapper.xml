@@ -3,100 +3,37 @@
 	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
 
 <mapper namespace="cn.tedu.store.mapper.GoodsMapper">
-
-	<!-- 获取所有商品的数据 -->
-	<!-- List<Goods> getGoodsList() -->
-	<select id="getGoodsList"
-		resultType="cn.tedu.store.entity.Goods">
-		SELECT 
-			id,
-			category_id 	categoryId,
-			item_type		itemType,
-			title,
-			sell_point		sellPoint,
-			price, 
-			num, 
-			barcode,
-			image, 
-			status, 
-			priority,
-			created_user	createdUser,
-			created_time	createdTime,
-			modified_user	modifiedUser,
-			modified_time	modifiedTime 
-		FROM 
-			t_goods 
-	</select>
 	
-	<!-- 根据商品分类id获取商品列表 -->
-	<!-- List<Goods> getGoodsListByCategory(
-			@Param("categoryId") Long categoryId, 
-			@Param("offset") Integer offset, 
-			@Param("countPerPage") Integer countPerPage) -->
-	<select id="getGoodsListByCategory"
-		resultType="cn.tedu.store.entity.Goods">
+	<select id="get_goods_list" resultType="Map">
 		SELECT
-			id, title, price, image 
+			*
 		FROM
-			t_goods
-		WHERE 
-			category_id=#{categoryId}
-			AND num > 0 AND status = 1
-		ORDER BY
-			priority DESC
-		LIMIT #{offset}, #{countPerPage}
+			zpb_goods
+		WHERE
+			type &gt; (#{type} - 1) * 3 and type &lt;= #{type} * 3
+		order by rate desc
+		LIMIT #{per},10
 	</select>
 	
-	<!-- 根据商品分类id获取商品数量 -->
-	<!-- Integer getGoodsCountByCategory(Long categoryId) -->
-	<select id="getGoodsCountByCategory"
-		resultType="java.lang.Integer">
+	<select id="get_user_tz" resultType="int">
+		SELECT
+			sum(tz_money)
+		from
+			zpb_user_tz
+		WHERE
+			goods_id = #{id}
+	</select>
+	
+	<select id="check_user_tz" resultType="Map">
 		SELECT 
-			COUNT(id) 
-		FROM 
-			t_goods 
-		WHERE 
-			category_id=#{categoryId}
+			*
+		FROM
+			zpb_user_tz
+		where
+			user_id = #{user_id}
+		and
+			goods_id = #{goods_id}
 	</select>
-	
-	<!-- 根据商品id获取商品数据 -->
-	<!-- Goods getGoodsById(Integer id) -->
-	<select id="getGoodsById"
-		resultType="cn.tedu.store.entity.Goods">
-		SELECT 
-			id,
-			category_id 	categoryId,
-			item_type		itemType,
-			title,
-			sell_point		sellPoint,
-			price, 
-			num, 
-			barcode,
-			image, 
-			status, 
-			priority
-		FROM 
-			t_goods 
-		WHERE 
-			id=#{id}
-	</select>
-	
-	<!-- 根据商品型号获取商品列表 -->
-	<!-- List<Goods> getGoodsListByItemType(
-			String itemType) -->
-	<select id="getGoodsListByItemType"
-		resultType="cn.tedu.store.entity.Goods">
-		SELECT 
-			id, title  
-		FROM 
-			t_goods 
-		WHERE 
-			item_type=#{itemType} 
-			AND num>0 AND status=1 
-		ORDER BY 
-			priority DESC 
-	</select>
-	
 
 </mapper>
 
