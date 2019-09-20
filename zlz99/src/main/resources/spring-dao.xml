@@ -12,7 +12,6 @@
 	<util:properties id="dbConf"
 		location="classpath:db.properties" />
 
-
 	<!-- 配置数据库的连接池 1.使用spring表达式给属性赋值 2.spring表达式语法格式：#{} -->
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp.BasicDataSource">
@@ -28,7 +27,6 @@
 		class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="cn.tedu.store.mapper" />
 	</bean>
-
 	<!-- SqlSessionFactoryBean的初始化 -->
 	<bean id="factoryBean"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -37,7 +35,6 @@
 		<!-- 读取编写sql语句的映射文件 -->
 		<property name="mapperLocations"
 			value="classpath:mappers/*.xml" />
-
 	</bean>
 
 
