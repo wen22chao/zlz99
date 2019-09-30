@@ -1,13 +1,8 @@
 package cn.tedu.store.mapper;
 
-import java.util.List;
+import cn.tedu.store.entity.*;
 
-import cn.tedu.store.entity.Banner;
-import cn.tedu.store.entity.Config;
-import cn.tedu.store.entity.IndexTz;
-import cn.tedu.store.entity.Members;
-import cn.tedu.store.entity.Product;
-import cn.tedu.store.entity.RealDeal;
+import java.util.List;
 
 public interface IndexMapper {
 	

@@ -1,9 +1,9 @@
 package cn.tedu.store.service;
 
+import cn.tedu.store.entity.Goods;
+
 import java.util.List;
 import java.util.Map;
-
-import cn.tedu.store.entity.Goods;
 
 public interface IGoodsService {
 	/**

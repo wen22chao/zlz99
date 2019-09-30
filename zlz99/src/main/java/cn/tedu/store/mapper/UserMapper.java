@@ -1,11 +1,10 @@
 package cn.tedu.store.mapper;
 
-import java.util.HashMap;
-import java.util.List;
-
+import cn.tedu.store.entity.User;
 import org.apache.ibatis.annotations.Param;
 
-import cn.tedu.store.entity.User;
+import java.util.HashMap;
+import java.util.List;
 
 public interface UserMapper {
 	

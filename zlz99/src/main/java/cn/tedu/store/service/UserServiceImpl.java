@@ -1,19 +1,18 @@
 package cn.tedu.store.service;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.util.DigestUtils;
-
 import cn.tedu.store.entity.User;
 import cn.tedu.store.mapper.UserMapper;
 import cn.tedu.store.service.ex.PasswordNotMatchException;
 import cn.tedu.store.service.ex.UserNotExistsException;
 import cn.tedu.store.service.ex.UsernameConflictException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.UUID;
 
 @Service("userService")
 public class UserServiceImpl implements IUserService {

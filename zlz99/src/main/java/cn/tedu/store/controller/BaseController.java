@@ -1,10 +1,9 @@
 package cn.tedu.store.controller;
 
-import javax.servlet.http.HttpSession;
-
+import cn.tedu.store.service.IIndexService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import cn.tedu.store.service.IIndexService;
+import javax.servlet.http.HttpSession;
 
 public abstract class BaseController {
 	@Autowired

@@ -1,17 +1,11 @@
 package cn.tedu.store.service;
 
-import java.util.List;
-
+import cn.tedu.store.entity.*;
+import cn.tedu.store.mapper.IndexMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cn.tedu.store.entity.Banner;
-import cn.tedu.store.entity.Config;
-import cn.tedu.store.entity.IndexTz;
-import cn.tedu.store.entity.Members;
-import cn.tedu.store.entity.Product;
-import cn.tedu.store.entity.RealDeal;
-import cn.tedu.store.mapper.IndexMapper;
+import java.util.List;
 
 @Service("indexService")
 public class IndexServiceImpl implements IIndexService {

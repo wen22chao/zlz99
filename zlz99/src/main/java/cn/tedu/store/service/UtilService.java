@@ -1,13 +1,12 @@
 package cn.tedu.store.service;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
+import cn.tedu.store.entity.Members;
+import cn.tedu.store.mapper.IndexMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cn.tedu.store.entity.Members;
-import cn.tedu.store.mapper.IndexMapper;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Service("utilService")
 public class UtilService implements IUtilService {

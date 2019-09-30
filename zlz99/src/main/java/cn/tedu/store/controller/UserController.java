@@ -1,11 +1,10 @@
 package cn.tedu.store.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import javax.servlet.http.HttpSession;
-
+import cn.tedu.store.entity.ResponseResult;
+import cn.tedu.store.entity.User;
+import cn.tedu.store.service.IUserService;
+import cn.tedu.store.service.ex.ServiceException;
+import cn.tedu.store.service.ex.UsernameConflictException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,11 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import cn.tedu.store.entity.ResponseResult;
-import cn.tedu.store.entity.User;
-import cn.tedu.store.service.IUserService;
-import cn.tedu.store.service.ex.ServiceException;
-import cn.tedu.store.service.ex.UsernameConflictException;
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 @Controller
 @RequestMapping("/user")

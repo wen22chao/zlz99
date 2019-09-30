@@ -1,24 +1,17 @@
 package cn.tedu.store.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.http.HttpSession;
-
+import cn.tedu.store.entity.*;
+import cn.tedu.store.service.IIndexService;
+import cn.tedu.store.service.IUtilService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import cn.tedu.store.entity.Banner;
-import cn.tedu.store.entity.Config;
-import cn.tedu.store.entity.IndexTz;
-import cn.tedu.store.entity.Product;
-import cn.tedu.store.entity.RealDeal;
-import cn.tedu.store.entity.ResponseResult;
-import cn.tedu.store.service.IIndexService;
-import cn.tedu.store.service.IUtilService;
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @ResponseBody

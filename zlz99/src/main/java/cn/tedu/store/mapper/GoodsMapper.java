@@ -1,9 +1,9 @@
 package cn.tedu.store.mapper;
 
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 import java.util.Map;
-
-import org.apache.ibatis.annotations.Param;
 
 
 public interface GoodsMapper {

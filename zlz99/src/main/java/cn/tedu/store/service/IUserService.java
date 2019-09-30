@@ -1,12 +1,12 @@
 package cn.tedu.store.service;
 
-import java.util.HashMap;
-import java.util.List;
-
 import cn.tedu.store.entity.User;
 import cn.tedu.store.service.ex.PasswordNotMatchException;
 import cn.tedu.store.service.ex.UserNotExistsException;
 import cn.tedu.store.service.ex.UsernameConflictException;
+
+import java.util.HashMap;
+import java.util.List;
 
 public interface IUserService {
 	
